@@ -59,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1854EDBE1CA088CC00413C86 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				1889F0E01C7AA5C1004C8D0E /* GameViewController.swift */,
+			);
+			name = VCs;
+			sourceTree = "<group>";
+		};
 		18757CC31C8E0F180031F6C8 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,7 +96,6 @@
 			children = (
 				1889F0F01C7AB016004C8D0E /* GameOfLife */,
 				18E17F941C7B8CB6002860E9 /* Resources */,
-				1889F0E01C7AA5C1004C8D0E /* GameViewController.swift */,
 				1889F0DA1C7AA5C1004C8D0E /* AppDelegate.swift */,
 				1889F0E21C7AA5C1004C8D0E /* Main.storyboard */,
 				1889F0E51C7AA5C1004C8D0E /* Assets.xcassets */,
@@ -101,6 +108,7 @@
 		1889F0F01C7AB016004C8D0E /* GameOfLife */ = {
 			isa = PBXGroup;
 			children = (
+				1854EDBE1CA088CC00413C86 /* VCs */,
 				18757CC31C8E0F180031F6C8 /* Utilities */,
 				1889F0F41C7AB8BB004C8D0E /* Models */,
 				1889F0F31C7AB8B1004C8D0E /* Nodes */,
