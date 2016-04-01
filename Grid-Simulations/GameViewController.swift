@@ -14,10 +14,8 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Switch out code here!
         let filePath = NSBundle.mainBundle().pathForResource("map01", ofType: "txt")!
         let sim = GameOfLifeSimulation(file: filePath)!
-        //
         
         let palette: [Character?] = ["♡", "■", nil, nil, nil, nil, nil, nil, nil, nil]
         let size = CGSize(width: 320, height: 576)

@@ -13,7 +13,6 @@
 		18701A791C8A55CA003DBBE7 /* PaletteGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18701A781C8A55CA003DBBE7 /* PaletteGrid.swift */; };
 		18701A7B1C8A590E003DBBE7 /* TouchableGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18701A7A1C8A590E003DBBE7 /* TouchableGrid.swift */; };
 		18757CB61C8CF14E0031F6C8 /* Simulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18757CB51C8CF14E0031F6C8 /* Simulation.swift */; };
-		18757CC21C8E05330031F6C8 /* NeighborsSimulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18757CC11C8E05330031F6C8 /* NeighborsSimulation.swift */; };
 		18757CC51C8E0F270031F6C8 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18757CC41C8E0F270031F6C8 /* StreamReader.swift */; };
 		18757CC91C8E141E0031F6C8 /* map01.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18757CC81C8E141E0031F6C8 /* map01.txt */; };
 		1889F0DB1C7AA5C1004C8D0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889F0DA1C7AA5C1004C8D0E /* AppDelegate.swift */; };
@@ -22,8 +21,6 @@
 		1889F0E61C7AA5C1004C8D0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1889F0E51C7AA5C1004C8D0E /* Assets.xcassets */; };
 		1889F0E91C7AA5C1004C8D0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1889F0E71C7AA5C1004C8D0E /* LaunchScreen.storyboard */; };
 		1889F0F21C7AB040004C8D0E /* SimulationScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889F0F11C7AB040004C8D0E /* SimulationScene.swift */; };
-		18E17F971C7B8CBE002860E9 /* gol-icons-pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E17F951C7B8CBE002860E9 /* gol-icons-pause.png */; };
-		18E17F981C7B8CBE002860E9 /* gol-icons-play.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E17F961C7B8CBE002860E9 /* gol-icons-play.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +30,6 @@
 		18701A781C8A55CA003DBBE7 /* PaletteGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaletteGrid.swift; path = GOL/PaletteGrid.swift; sourceTree = "<group>"; };
 		18701A7A1C8A590E003DBBE7 /* TouchableGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TouchableGrid.swift; path = GOL/TouchableGrid.swift; sourceTree = "<group>"; };
 		18757CB51C8CF14E0031F6C8 /* Simulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Simulation.swift; path = GOL/Simulation.swift; sourceTree = "<group>"; };
-		18757CC11C8E05330031F6C8 /* NeighborsSimulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NeighborsSimulation.swift; path = GOL/NeighborsSimulation.swift; sourceTree = "<group>"; };
 		18757CC41C8E0F270031F6C8 /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamReader.swift; path = GOL/StreamReader.swift; sourceTree = "<group>"; };
 		18757CC81C8E141E0031F6C8 /* map01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = map01.txt; sourceTree = "<group>"; };
 		1889F0D71C7AA5C1004C8D0E /* Grid-Simulations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Grid-Simulations.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,8 +40,6 @@
 		1889F0E81C7AA5C1004C8D0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1889F0EA1C7AA5C1004C8D0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1889F0F11C7AB040004C8D0E /* SimulationScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimulationScene.swift; path = GOL/SimulationScene.swift; sourceTree = "<group>"; };
-		18E17F951C7B8CBE002860E9 /* gol-icons-pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gol-icons-pause.png"; sourceTree = "<group>"; };
-		18E17F961C7B8CBE002860E9 /* gol-icons-play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gol-icons-play.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +127,6 @@
 			children = (
 				1854EDBC1CA068DC00413C86 /* GameOfLifeSimulation.swift */,
 				18757CB51C8CF14E0031F6C8 /* Simulation.swift */,
-				18757CC11C8E05330031F6C8 /* NeighborsSimulation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -141,8 +134,6 @@
 		18E17F941C7B8CB6002860E9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				18E17F951C7B8CBE002860E9 /* gol-icons-pause.png */,
-				18E17F961C7B8CBE002860E9 /* gol-icons-play.png */,
 				18757CC81C8E141E0031F6C8 /* map01.txt */,
 			);
 			name = Resources;
@@ -207,10 +198,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				18757CC91C8E141E0031F6C8 /* map01.txt in Resources */,
-				18E17F971C7B8CBE002860E9 /* gol-icons-pause.png in Resources */,
 				1889F0E91C7AA5C1004C8D0E /* LaunchScreen.storyboard in Resources */,
 				1889F0E61C7AA5C1004C8D0E /* Assets.xcassets in Resources */,
-				18E17F981C7B8CBE002860E9 /* gol-icons-play.png in Resources */,
 				1889F0E41C7AA5C1004C8D0E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,7 +215,6 @@
 				18757CB61C8CF14E0031F6C8 /* Simulation.swift in Sources */,
 				1854EDBD1CA068DC00413C86 /* GameOfLifeSimulation.swift in Sources */,
 				1889F0F21C7AB040004C8D0E /* SimulationScene.swift in Sources */,
-				18757CC21C8E05330031F6C8 /* NeighborsSimulation.swift in Sources */,
 				1889F0E11C7AA5C1004C8D0E /* GameViewController.swift in Sources */,
 				18701A791C8A55CA003DBBE7 /* PaletteGrid.swift in Sources */,
 				18757CC51C8E0F270031F6C8 /* StreamReader.swift in Sources */,

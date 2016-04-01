@@ -35,7 +35,7 @@ public class SimulationScene: SKScene {
         self.sim = sim
         sim.setup()
         
-        grid = TouchableGrid(charMap: sim.map)
+        grid = TouchableGrid(charMap: sim.grid)
         grid.position = gridPosition
         
         self.palette = palette
@@ -90,10 +90,10 @@ public class SimulationScene: SKScene {
     }
     
     func gridCellTouched(x: Int, y: Int) {
-        if sim.map[x][y] != liveChar {
-            sim.map[x][y] = liveChar
+        if sim.grid[x][y] != liveChar {
+            sim.grid[x][y] = liveChar
         } else {
-            sim.map[x][y] = nil
+            sim.grid[x][y] = nil
         }
         update()
     }
@@ -134,6 +134,6 @@ public class SimulationScene: SKScene {
     }
     
     func update() {
-        grid.updateAll(sim.map)
+        grid.updateAll(sim.grid)
     }
 }
