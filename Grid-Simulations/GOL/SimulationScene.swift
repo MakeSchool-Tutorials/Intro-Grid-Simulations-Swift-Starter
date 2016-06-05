@@ -16,14 +16,14 @@ public class SimulationScene: SKScene {
     let stepButtonPosition = CGPoint(x: 10.0, y: 10.0)
     let generationLabelPosition = CGPoint(x: 10.0, y: 470.0)
     
-    public let sim: Simulation
-    public let palette: [Character?]
+    internal var sim: Simulation!
+    internal var palette: [Character?]!
     
-    let grid: TouchableGrid
-    let paletteGrid: PaletteGrid
-    let playButton: PlayPauseButton
-    let stepButton: SKButton
-    let generationLabel: SKLabelNode
+    var grid: TouchableGrid!
+    var paletteGrid: PaletteGrid!
+    var playButton: MSPlayPauseToggleButtonNode!
+    var stepButton: MSButtonNode!
+    var generationLabel: SKLabelNode!
     
     var timer: NSTimer? = nil
     
@@ -31,62 +31,34 @@ public class SimulationScene: SKScene {
     
     var generation = 1
     
-    public init(sim: Simulation, palette: [Character?], size: CGSize) {
+    internal func setup(simulation sim: Simulation, palette: [Character?]) {
         self.sim = sim
         sim.setup()
-        
-        grid = TouchableGrid(charMap: sim.grid)
-        grid.position = gridPosition
-        
         self.palette = palette
+    }
+    
+    public override func didMoveToView(view: SKView) {
+        playButton = childNodeWithName("playButton") as! MSPlayPauseToggleButtonNode
+        stepButton = childNodeWithName("stepButton") as! MSButtonNode
+        playButton.selectedHandler = playPausePressed
+        stepButton.selectedHandler = stepButtonPressed
         
-        paletteGrid = PaletteGrid(paletteArray: palette)
-        paletteGrid.position = palettePosition
+        generationLabel = childNodeWithName("generationLabel") as! SKLabelNode
         
-        playButton = PlayPauseButton(size: CGSize(width: 70, height: 40))
-        playButton.position = playButtonPosition
+        grid = childNodeWithName("grid") as! TouchableGrid
+        grid.setup(sim.grid)
+        grid.touchCallback = gridCellTouched
         
-        stepButton = SKButton(size: CGSize(width: 70, height: 40), textString: "Step")
-        stepButton.position = stepButtonPosition
+        paletteGrid = childNodeWithName("palette") as! PaletteGrid
+        paletteGrid.setup(palette)
+        paletteGrid.touchCallback = paletteCellTouched
         
         if palette.count != 0 {
             liveChar = palette[0]
             paletteGrid.highlightCell(0)
         } else {
-            liveChar = "■"
+            liveChar = "👾"
         }
-        
-        generationLabel = SKLabelNode(text: "Generation: \(generation)")
-        generationLabel.position = generationLabelPosition
-        generationLabel.horizontalAlignmentMode = .Left
-        generationLabel.fontName = "Helvetica Neue"
-        generationLabel.fontSize = 22.0
-        generationLabel.fontColor = UIColor.whiteColor()
-        
-        super.init(size: size)
-        
-        grid.touchCallback = gridCellTouched
-        self.addChild(grid)
-        
-        paletteGrid.touchCallback = paletteCellTouched
-        self.addChild(paletteGrid)
-        
-        playButton.playPauseCallback = playPausePressed
-        self.addChild(playButton)
-        
-        stepButton.touchCallback = stepButtonPressed
-        self.addChild(stepButton)
-        
-        self.addChild(generationLabel)
-        
-        self.backgroundColor = UIColor.grayColor()
-    }
-    
-    public override func didMoveToView(view: SKView) {
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     func gridCellTouched(x: Int, y: Int) {
@@ -104,28 +76,18 @@ public class SimulationScene: SKScene {
     }
     
     func timerUpdate() {
-        generation++
+        generation += 1
         generationLabel.text = "Generation: \(generation)"
         sim.update()
         update()
     }
     
-    public func play() {
-        playPausePressed(true)
-    }
-    
-    public func pause() {
-        playPausePressed(false)
-    }
-    
-    func playPausePressed(playing: Bool) {
-        if (playing) {
-            timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "timerUpdate", userInfo: nil, repeats: true)
+    func playPausePressed() {
+        if playButton.toggled {
+            timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(SimulationScene.timerUpdate), userInfo: nil, repeats: true)
             timer?.fire()
-            stepButton.disabled = true
         } else {
             timer?.invalidate()
-            stepButton.disabled = false
         }
     }
     

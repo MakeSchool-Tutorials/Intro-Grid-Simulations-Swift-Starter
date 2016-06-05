@@ -15,13 +15,13 @@ public class PaletteGrid: TouchableGrid {
     public var tileHighlightedLineWidth: CGFloat = 2.0
     public var tileHighlightedLineColor = UIColor.whiteColor()
     
-    public init(paletteArray: [Character?]) {
+    internal func setup(paletteArray: [Character?]) {
         let map = PaletteGrid.arrayToMap(paletteArray)
-        super.init(charMap: map)
+        super.setup(map)
     }
 
     public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     public func updateAll(palette: [Character?]) {
@@ -29,8 +29,8 @@ public class PaletteGrid: TouchableGrid {
     }
     
     public func highlightCell(x: Int) {
-        if x != highlighted {
-            if let highlighted = highlighted {
+        if let highlighted = highlighted {
+            if x != highlighted {
                 let cell = self.shapeMap[highlighted][0]
                 cell.lineWidth = tileDefaultLineWidth
                 cell.strokeColor = tileDefaultLineColor
@@ -40,7 +40,7 @@ public class PaletteGrid: TouchableGrid {
             cell.lineWidth = tileHighlightedLineWidth
             cell.strokeColor = tileHighlightedLineColor
             cell.zPosition = 0.5
-            highlighted = x
+            self.highlighted = x
         }
     }
     

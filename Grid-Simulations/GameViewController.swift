@@ -17,10 +17,10 @@ class GameViewController: UIViewController {
         let filePath = NSBundle.mainBundle().pathForResource("map01", ofType: "txt")!
         let sim = GameOfLifeSimulation(file: filePath)!
         
-        let palette: [Character?] = ["♡", "■", nil, nil, nil, nil, nil, nil, nil, nil]
-        let size = CGSize(width: 320, height: 576)
+        let palette: [Character?] = ["👾", "😸", nil, nil, nil, nil, nil, nil, nil]
         
-        let scene = SimulationScene(sim: sim, palette: palette, size: size)
+        let scene = SimulationScene(fileNamed: "SimulationScene")!
+        scene.setup(simulation: sim, palette: palette)
 
         let skView = self.view as! SKView
         
@@ -30,7 +30,7 @@ class GameViewController: UIViewController {
     }
 
     override func shouldAutorotate() -> Bool {
-        return true
+        return false
     }
 
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
