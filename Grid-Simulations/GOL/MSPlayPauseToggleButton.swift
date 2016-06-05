@@ -30,7 +30,7 @@ class MSPlayPauseToggleButtonNode: MSButtonNode {
         label.position = CGPoint(x: 0, y: 4)
         label.fontName = "Menlo Bold"
         label.fontSize = 32
-        label.fontColor = SKColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
+        label.fontColor = SKColor(red: 0, green: 43.0/255, blue: 62.0/255, alpha: 1.0)
         label.verticalAlignmentMode = .Center
         label.horizontalAlignmentMode = .Center
         self.addChild(label)

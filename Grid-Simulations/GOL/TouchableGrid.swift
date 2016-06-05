@@ -70,7 +70,7 @@ public class TouchableGrid: SKSpriteNode {
         if let touch = touches.first {
             let touchPosition = touch.locationInNode(self)
             let x = Int(touchPosition.x / tileSize)
-            let y = Int(touchPosition.y / tileSize)
+            let y = Int((touchPosition.y - verticalOffset) / tileSize)
             if 0 <= x && x < width &&
                0 <= y && y < height {
                 if let touchCallback = touchCallback {
@@ -90,11 +90,12 @@ public class TouchableGrid: SKSpriteNode {
     
     func labelFactory(char: String, x: Int, y: Int) -> SKLabelNode {
         let newLabel = SKLabelNode(text: String(char))
-        newLabel.verticalAlignmentMode = .Center
+        newLabel.verticalAlignmentMode = .Baseline
         newLabel.horizontalAlignmentMode = .Center
         newLabel.fontSize = 54.0
         newLabel.fontName = "Menlo Bold"
-        newLabel.position = CGPoint(x: (CGFloat(x)+0.5) * tileSize, y: (CGFloat(y)+0.5) * tileSize + verticalOffset)
+        let baselineOffest: CGFloat = 14.0
+        newLabel.position = CGPoint(x: (CGFloat(x)+0.5) * tileSize, y: (CGFloat(y)) * tileSize + verticalOffset + baselineOffest)
         newLabel.zPosition = 10
         return newLabel
     }
@@ -117,24 +118,24 @@ public class TouchableGrid: SKSpriteNode {
         }
     }
     
-//    public func setOverlayText(x: Int, _ y: Int, text: String?, color: UIColor) {
-//        let label = overlayTextMap[x][y]
-//        if let label = label {
-//            if let text = text {
-//                label.text = text
-//                label.fontColor = color
-//            } else {
-//                label.removeFromParent()
-//                overlayTextMap[x][y] = nil
-//            }
-//        } else {
-//            if let text = text {
-//                let newLabel = labelFactory(text, x: x, y: y)
-//                self.addChild(newLabel)
-//                map[x][y] = newLabel
-//            }
-//        }
-//    }
+    public func setOverlayText(x: Int, _ y: Int, text: String?, color: UIColor) {
+        let label = overlayTextMap[x][y]
+        if let label = label {
+            if let text = text {
+                label.text = text
+                label.fontColor = color
+            } else {
+                label.removeFromParent()
+                overlayTextMap[x][y] = nil
+            }
+        } else {
+            if let text = text {
+                let newLabel = labelFactory(text, x: x, y: y)
+                self.addChild(newLabel)
+                map[x][y] = newLabel
+            }
+        }
+    }
     
     public enum TileState {
         case Default
