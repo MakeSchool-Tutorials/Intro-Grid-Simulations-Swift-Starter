@@ -53,6 +53,7 @@ class GameViewController: UIViewController {
         
         let scene = SimulationScene(fileNamed: "SimulationScene")!
         scene.setup(simulation: sim, palette: palette)
+        
         let skView = self.view as! SKView
         scene.scaleMode = .AspectFill
         skView.presentScene(scene)

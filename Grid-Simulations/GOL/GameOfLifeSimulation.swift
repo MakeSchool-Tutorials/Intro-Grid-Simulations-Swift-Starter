@@ -12,9 +12,15 @@ public class GameOfLifeSimulation: Simulation {
 
     public var liveChar: Character = "👾"
     
-    public override func setup() {
+    public override func update() {
+        
+    }
+
+    func getAlive(grid: [[Character?]], column x: Int, row y: Int) -> Int {
+        return 1
     }
     
-    public override func update() {
+    func countNeighbors(grid: [[Character?]], column x: Int, row y: Int) -> Int {
+        return 1
     }
 }
