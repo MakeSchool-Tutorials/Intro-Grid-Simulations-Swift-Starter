@@ -22,7 +22,7 @@ public class TouchableGrid: SKSpriteNode {
     }
     
     let tileSize: CGFloat = 76
-    public var touchCallback: ((Int, Int) -> Void)? = nil
+    public var touchCallback: ((Int, Int, Bool) -> Void)? = nil
     
     public var textDefaultColor = UIColor.whiteColor()
     public var tileDefaultColor = UIColor.clearColor()
@@ -72,9 +72,23 @@ public class TouchableGrid: SKSpriteNode {
             let x = Int(touchPosition.x / tileSize)
             let y = Int((touchPosition.y - verticalOffset) / tileSize)
             if 0 <= x && x < width &&
-               0 <= y && y < height {
+                0 <= y && y < height {
                 if let touchCallback = touchCallback {
-                    touchCallback(x, y)
+                    touchCallback(x, y, false)
+                }
+            }
+        }
+    }
+    
+    public override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touch = touches.first {
+            let touchPosition = touch.locationInNode(self)
+            let x = Int(touchPosition.x / tileSize)
+            let y = Int((touchPosition.y - verticalOffset) / tileSize)
+            if 0 <= x && x < width &&
+                0 <= y && y < height {
+                if let touchCallback = touchCallback {
+                    touchCallback(x, y, true)
                 }
             }
         }

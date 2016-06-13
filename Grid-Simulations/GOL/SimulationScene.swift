@@ -61,7 +61,7 @@ public class SimulationScene: SKScene {
         }
     }
     
-    func gridCellTouched(x: Int, y: Int) {
+    func gridCellTouched(x: Int, y: Int, moved: Bool) {
         if sim.grid[x][y] != liveChar {
             sim.grid[x][y] = liveChar
         } else {
@@ -70,7 +70,7 @@ public class SimulationScene: SKScene {
         update()
     }
     
-    func paletteCellTouched(x: Int, _: Int) {
+    func paletteCellTouched(x: Int, y: Int, moved: Bool) {
         paletteGrid.highlightCell(x)
         liveChar = palette[x]
     }

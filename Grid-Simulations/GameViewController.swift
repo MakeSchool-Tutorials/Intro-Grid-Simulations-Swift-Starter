@@ -13,19 +13,21 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        /////////////////////////////
+        // Simulation setup start //
+        ///////////////////////////
         let filePath = NSBundle.mainBundle().pathForResource("map01", ofType: "txt")!
         let sim = GameOfLifeSimulation(file: filePath)!
-        
         let palette: [Character?] = ["👾", "😸", nil, nil, nil, nil, nil, nil, nil]
+        ///////////////////////////
+        // Simulation setup end //
+        /////////////////////////
         
         let scene = SimulationScene(fileNamed: "SimulationScene")!
         scene.setup(simulation: sim, palette: palette)
-
         let skView = self.view as! SKView
-        
         scene.scaleMode = .AspectFill
-        
         skView.presentScene(scene)
     }
 
@@ -34,11 +36,7 @@ class GameViewController: UIViewController {
     }
 
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return .AllButUpsideDown
-        } else {
-            return .All
-        }
+        return .Portrait
     }
 
     override func didReceiveMemoryWarning() {
