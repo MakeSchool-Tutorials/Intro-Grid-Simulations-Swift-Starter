@@ -20,6 +20,7 @@
 		1889F0E61C7AA5C1004C8D0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1889F0E51C7AA5C1004C8D0E /* Assets.xcassets */; };
 		1889F0E91C7AA5C1004C8D0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1889F0E71C7AA5C1004C8D0E /* LaunchScreen.storyboard */; };
 		1889F0F21C7AB040004C8D0E /* SimulationScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1889F0F11C7AB040004C8D0E /* SimulationScene.swift */; };
+		BC4864551D0E8D460052A075 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4864541D0E8D460052A075 /* Random.swift */; };
 		BC6D95FD1D04866800B10A4C /* SimulationScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BC6D95FC1D04866800B10A4C /* SimulationScene.sks */; };
 		BC6D96021D0487B100B10A4C /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6D95FE1D0487B100B10A4C /* background.png */; };
 		BC6D96031D0487B100B10A4C /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6D95FF1D0487B100B10A4C /* button.png */; };
@@ -45,6 +46,7 @@
 		1889F0E81C7AA5C1004C8D0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1889F0EA1C7AA5C1004C8D0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1889F0F11C7AB040004C8D0E /* SimulationScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimulationScene.swift; path = GOL/SimulationScene.swift; sourceTree = "<group>"; };
+		BC4864541D0E8D460052A075 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		BC6D95FC1D04866800B10A4C /* SimulationScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = SimulationScene.sks; path = Resources/SimulationScene.sks; sourceTree = "<group>"; };
 		BC6D95FE1D0487B100B10A4C /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/background.png; sourceTree = "<group>"; };
 		BC6D95FF1D0487B100B10A4C /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button.png; path = Resources/button.png; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				18757CC41C8E0F270031F6C8 /* StreamReader.swift */,
+				BC4864541D0E8D460052A075 /* Random.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				1889F0E11C7AA5C1004C8D0E /* GameViewController.swift in Sources */,
 				18701A791C8A55CA003DBBE7 /* PaletteGrid.swift in Sources */,
 				18757CC51C8E0F270031F6C8 /* StreamReader.swift in Sources */,
+				BC4864551D0E8D460052A075 /* Random.swift in Sources */,
 				181F19E01C84F5A400CD6EAA /* MSButtonNode.swift in Sources */,
 				1889F0DB1C7AA5C1004C8D0E /* AppDelegate.swift in Sources */,
 				18701A7B1C8A590E003DBBE7 /* TouchableGrid.swift in Sources */,
