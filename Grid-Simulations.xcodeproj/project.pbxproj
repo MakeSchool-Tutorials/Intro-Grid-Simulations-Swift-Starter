@@ -27,7 +27,6 @@
 		BC6D96041D0487B100B10A4C /* grid.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6D96001D0487B100B10A4C /* grid.png */; };
 		BC6D96051D0487B100B10A4C /* palette.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6D96011D0487B100B10A4C /* palette.png */; };
 		BC6D96071D048AD700B10A4C /* MSPlayPauseToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6D96061D048AD700B10A4C /* MSPlayPauseToggleButton.swift */; };
-		BC86072B1D0E76B100C3C94A /* ForestFireSimulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC86072A1D0E76B100C3C94A /* ForestFireSimulation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,7 +52,6 @@
 		BC6D96001D0487B100B10A4C /* grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grid.png; path = Resources/grid.png; sourceTree = "<group>"; };
 		BC6D96011D0487B100B10A4C /* palette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = palette.png; path = Resources/palette.png; sourceTree = "<group>"; };
 		BC6D96061D048AD700B10A4C /* MSPlayPauseToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MSPlayPauseToggleButton.swift; path = GOL/MSPlayPauseToggleButton.swift; sourceTree = "<group>"; };
-		BC86072A1D0E76B100C3C94A /* ForestFireSimulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForestFireSimulation.swift; path = GOL/ForestFireSimulation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				1854EDBC1CA068DC00413C86 /* GameOfLifeSimulation.swift */,
-				BC86072A1D0E76B100C3C94A /* ForestFireSimulation.swift */,
 				18757CB51C8CF14E0031F6C8 /* Simulation.swift */,
 			);
 			name = Models;
@@ -238,7 +235,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				18757CB61C8CF14E0031F6C8 /* Simulation.swift in Sources */,
-				BC86072B1D0E76B100C3C94A /* ForestFireSimulation.swift in Sources */,
 				BC6D96071D048AD700B10A4C /* MSPlayPauseToggleButton.swift in Sources */,
 				1854EDBD1CA068DC00413C86 /* GameOfLifeSimulation.swift in Sources */,
 				1889F0F21C7AB040004C8D0E /* SimulationScene.swift in Sources */,
