@@ -13,9 +13,9 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Put random seed code here!
-        let time = UInt32(NSDate().timeIntervalSinceReferenceDate)
-        srandom(time) // this "seeds" subsequent random() calls
+        
         
         ///////////////////////////////////////
         // GameOfLifeSimulation setup start //
