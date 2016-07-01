@@ -23,7 +23,7 @@ class GameViewController: UIViewController {
         
         let filePath = NSBundle.mainBundle().pathForResource("map01", ofType: "txt")!
         let sim = GameOfLifeSimulation(file: filePath)!
-        let palette: [Character?] = ["👾", "😸", nil, nil, nil, nil, nil, nil, nil]
+        let palette: [Character?] = ["👾", "😸", nil, nil, nil, nil, nil, nil]
         
         /////////////////////////////////////
         // GameOfLifeSimulation setup end //
@@ -34,7 +34,7 @@ class GameViewController: UIViewController {
         /////////////////////////////////////
         
 //        let sim = ForestFireSimulation()
-//        let palette: [Character?] = ["🔥", "🌲", nil, nil, nil, nil, nil, nil, nil, nil]
+//        let palette: [Character?] = ["🔥", "🌲", nil, nil, nil, nil, nil, nil]
         
         /////////////////////////////////////
         // ForestFireSimulation setup end //
@@ -45,7 +45,7 @@ class GameViewController: UIViewController {
         //////////////////////////////////
         
 //        let sim = YourSimulationClass()
-//        let palette: [Character?] = [nil, nil, nil, nil, nil, nil, nil, nil, nil]
+//        let palette: [Character?] = [nil, nil, nil, nil, nil, nil, nil, nil]
         
         //////////////////////////////////
         // Custom Simulation setup end //
