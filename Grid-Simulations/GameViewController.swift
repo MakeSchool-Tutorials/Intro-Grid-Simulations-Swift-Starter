@@ -14,8 +14,6 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Put random seed code here!
-        
         
         ///////////////////////////////////////
         // GameOfLifeSimulation setup start //
