@@ -8,23 +8,23 @@
 
 import Foundation
 
-public class StreamReader  {
+open class StreamReader  {
     
-    let encoding : UInt
+    let encoding : String.Encoding
     let chunkSize : Int
     
-    var fileHandle : NSFileHandle!
+    var fileHandle : FileHandle!
     let buffer : NSMutableData!
-    let delimData : NSData!
+    let delimData : Data!
     var atEof : Bool = false
     
-    public init?(path: String, delimiter: String = "\n", encoding : UInt = NSUTF8StringEncoding, chunkSize : Int = 4096) {
+    public init?(path: String, delimiter: String = "\n", encoding: String.Encoding = String.Encoding.utf8, chunkSize : Int = 4096) {
         self.chunkSize = chunkSize
         self.encoding = encoding
         
-        if let fileHandle = NSFileHandle(forReadingAtPath: path),
-            delimData = delimiter.dataUsingEncoding(encoding),
-            buffer = NSMutableData(capacity: chunkSize)
+        if let fileHandle = FileHandle(forReadingAtPath: path),
+            let delimData = delimiter.data(using: encoding),
+            let buffer = NSMutableData(capacity: chunkSize)
         {
             self.fileHandle = fileHandle
             self.delimData = delimData
@@ -42,7 +42,7 @@ public class StreamReader  {
     }
     
     /// Return next line, or nil on EOF.
-    public func nextLine() -> String? {
+    open func nextLine() -> String? {
         precondition(fileHandle != nil, "Attempt to read from closed file")
         
         if atEof {
@@ -50,15 +50,15 @@ public class StreamReader  {
         }
         
         // Read data chunks from file until a line delimiter is found:
-        var range = buffer.rangeOfData(delimData, options: [], range: NSMakeRange(0, buffer.length))
+        var range = buffer.range(of: delimData, options: [], in: NSMakeRange(0, buffer.length))
         while range.location == NSNotFound {
-            let tmpData = fileHandle.readDataOfLength(chunkSize)
-            if tmpData.length == 0 {
+            let tmpData = fileHandle.readData(ofLength: chunkSize)
+            if tmpData.count == 0 {
                 // EOF or read error.
                 atEof = true
                 if buffer.length > 0 {
                     // Buffer contains last line in file (not terminated by delimiter).
-                    let line = NSString(data: buffer, encoding: encoding)
+                    let line = String(data: buffer as Data, encoding: encoding)
                     
                     buffer.length = 0
                     return line as String?
@@ -66,28 +66,28 @@ public class StreamReader  {
                 // No more lines.
                 return nil
             }
-            buffer.appendData(tmpData)
-            range = buffer.rangeOfData(delimData, options: [], range: NSMakeRange(0, buffer.length))
+            buffer.append(tmpData)
+            range = buffer.range(of: delimData, options: [], in: NSMakeRange(0, buffer.length))
         }
         
         // Convert complete line (excluding the delimiter) to a string:
-        let line = NSString(data: buffer.subdataWithRange(NSMakeRange(0, range.location)),
+        let line = String(data: buffer.subdata(with: NSMakeRange(0, range.location)),
             encoding: encoding)
         // Remove line (and the delimiter) from the buffer:
-        buffer.replaceBytesInRange(NSMakeRange(0, range.location + range.length), withBytes: nil, length: 0)
+        buffer.replaceBytes(in: NSMakeRange(0, range.location + range.length), withBytes: nil, length: 0)
         
         return line as String?
     }
     
     /// Start reading from the beginning of file.
-    public func rewind() -> Void {
-        fileHandle.seekToFileOffset(0)
+    open func rewind() -> Void {
+        fileHandle.seek(toFileOffset: 0)
         buffer.length = 0
         atEof = false
     }
     
     /// Close the underlying file. No reading must be done after calling this method.
-    public func close() -> Void {
+    open func close() -> Void {
         fileHandle?.closeFile()
         fileHandle = nil
     }

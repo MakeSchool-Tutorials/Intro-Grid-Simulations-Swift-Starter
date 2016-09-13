@@ -31,14 +31,14 @@ class MSPlayPauseToggleButtonNode: MSButtonNode {
         label.fontName = "Menlo Bold"
         label.fontSize = 32
         label.fontColor = SKColor(red: 0, green: 43.0/255, blue: 62.0/255, alpha: 1.0)
-        label.verticalAlignmentMode = .Center
-        label.horizontalAlignmentMode = .Center
+        label.verticalAlignmentMode = .center
+        label.horizontalAlignmentMode = .center
         self.addChild(label)
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         toggled = !toggled
-        super.touchesEnded(touches, withEvent: event)
+        super.touchesEnded(touches, with: event)
     }
     
 }

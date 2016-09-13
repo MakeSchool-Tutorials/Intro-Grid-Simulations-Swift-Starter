@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-public class TouchableGrid: SKSpriteNode {
+open class TouchableGrid: SKSpriteNode {
     
     var map: [[SKLabelNode?]]!
     var shapeMap: [[SKShapeNode]]!
@@ -22,24 +22,24 @@ public class TouchableGrid: SKSpriteNode {
     }
     
     let tileSize: CGFloat = 76
-    public var touchCallback: ((Int, Int, Bool) -> Void)? = nil
+    open var touchCallback: ((Int, Int, Bool) -> Void)? = nil
     
-    public var textDefaultColor = UIColor.whiteColor()
-    public var tileDefaultColor = UIColor.clearColor()
-    public var textIncorrectColor = UIColor.init(red: 0.8, green: 0, blue: 0, alpha: 1.0)
-    public var tileIncorrectColor = UIColor.init(red: 0.8, green: 0, blue: 0, alpha: 1.0)
-    public var tileDefaultLineWidth: CGFloat = 1.0
-    public var tileDefaultLineColor = UIColor.blackColor()
+    open var textDefaultColor = UIColor.white
+    open var tileDefaultColor = UIColor.clear
+    open var textIncorrectColor = UIColor.init(red: 0.8, green: 0, blue: 0, alpha: 1.0)
+    open var tileIncorrectColor = UIColor.init(red: 0.8, green: 0, blue: 0, alpha: 1.0)
+    open var tileDefaultLineWidth: CGFloat = 1.0
+    open var tileDefaultLineColor = UIColor.black
     let verticalOffset: CGFloat = 16
     
-    func setup(charMap: [[Character?]]) {
-        self.userInteractionEnabled = true
+    func setup(_ charMap: [[Character?]]) {
+        self.isUserInteractionEnabled = true
         
         if (charMap.count != 0) {
-            map = [[SKLabelNode?]].init(count: charMap.count,
-                repeatedValue: [SKLabelNode?].init(count: charMap[0].count, repeatedValue: nil))
-            overlayTextMap = [[SKLabelNode?]].init(count: charMap.count,
-                repeatedValue: [SKLabelNode?].init(count: charMap[0].count, repeatedValue: nil))
+            map = [[SKLabelNode?]].init(repeating: [SKLabelNode?].init(repeating: nil, count: charMap[0].count),
+                count: charMap.count)
+            overlayTextMap = [[SKLabelNode?]].init(repeating: [SKLabelNode?].init(repeating: nil, count: charMap[0].count),
+                count: charMap.count)
         } else {
             map = []
             overlayTextMap = []
@@ -66,9 +66,9 @@ public class TouchableGrid: SKSpriteNode {
         super.init(coder: aDecoder)
     }
     
-    override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            let touchPosition = touch.locationInNode(self)
+            let touchPosition = touch.location(in: self)
             let x = Int(touchPosition.x / tileSize)
             let y = Int((touchPosition.y - verticalOffset) / tileSize)
             if 0 <= x && x < width &&
@@ -80,9 +80,9 @@ public class TouchableGrid: SKSpriteNode {
         }
     }
     
-    public override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            let touchPosition = touch.locationInNode(self)
+            let touchPosition = touch.location(in: self)
             let x = Int(touchPosition.x / tileSize)
             let y = Int((touchPosition.y - verticalOffset) / tileSize)
             if 0 <= x && x < width &&
@@ -94,7 +94,7 @@ public class TouchableGrid: SKSpriteNode {
         }
     }
 
-    public func updateAll(map: [[Character?]]) {
+    open func updateAll(_ map: [[Character?]]) {
         for i in 0..<map.count {
             for j in 0..<map[i].count {
                 setCell(i, y: j, char: map[i][j])
@@ -102,10 +102,10 @@ public class TouchableGrid: SKSpriteNode {
         }
     }
     
-    func labelFactory(char: String, x: Int, y: Int) -> SKLabelNode {
+    func labelFactory(_ char: String, x: Int, y: Int) -> SKLabelNode {
         let newLabel = SKLabelNode(text: String(char))
-        newLabel.verticalAlignmentMode = .Baseline
-        newLabel.horizontalAlignmentMode = .Center
+        newLabel.verticalAlignmentMode = .baseline
+        newLabel.horizontalAlignmentMode = .center
         newLabel.fontSize = 54.0
         newLabel.fontName = "Menlo Bold"
         let baselineOffest: CGFloat = 14.0
@@ -114,7 +114,7 @@ public class TouchableGrid: SKSpriteNode {
         return newLabel
     }
     
-    public func setCell(x: Int, y: Int, char: Character?) {
+    open func setCell(_ x: Int, y: Int, char: Character?) {
         let label = map[x][y]
         if let label = label {
             if char == nil {
@@ -132,7 +132,7 @@ public class TouchableGrid: SKSpriteNode {
         }
     }
     
-    public func setOverlayText(x: Int, _ y: Int, text: String?, color: UIColor) {
+    open func setOverlayText(_ x: Int, _ y: Int, text: String?, color: UIColor) {
         let label = overlayTextMap[x][y]
         if let label = label {
             if let text = text {
@@ -152,20 +152,20 @@ public class TouchableGrid: SKSpriteNode {
     }
     
     public enum TileState {
-        case Default
-        case Incorrect
+        case `default`
+        case incorrect
     }
     
-    public func setTileState(x: Int, _ y: Int, state: TileState) {
+    open func setTileState(_ x: Int, _ y: Int, state: TileState) {
         let shape = shapeMap[x][y]
         let label = map[x][y]
         switch state {
-        case .Default:
+        case .default:
             if let label = label {
                 label.fontColor = textDefaultColor
             }
             shape.fillColor = tileDefaultColor
-        case .Incorrect:
+        case .incorrect:
             if let label = label {
                 label.fontColor = textIncorrectColor
             } else {

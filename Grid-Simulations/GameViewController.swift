@@ -21,7 +21,7 @@ class GameViewController: UIViewController {
         // GameOfLifeSimulation setup start //
         /////////////////////////////////////
         
-        let filePath = NSBundle.mainBundle().pathForResource("map01", ofType: "txt")!
+        let filePath = Bundle.main.path(forResource: "map01", ofType: "txt")!
         let sim = GameOfLifeSimulation(file: filePath)!
         let palette: [Character?] = ["👾", "😸", nil, nil, nil, nil, nil, nil]
         
@@ -55,16 +55,16 @@ class GameViewController: UIViewController {
         scene.setup(simulation: sim, palette: palette)
         
         let skView = self.view as! SKView
-        scene.scaleMode = .AspectFill
+        scene.scaleMode = .aspectFill
         skView.presentScene(scene)
     }
 
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return false
     }
 
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return .Portrait
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return .portrait
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,7 +72,7 @@ class GameViewController: UIViewController {
         // Release any cached data, images, etc that aren't in use.
     }
 
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 }

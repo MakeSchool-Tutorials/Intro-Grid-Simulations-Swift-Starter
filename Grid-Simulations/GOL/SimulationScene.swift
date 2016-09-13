@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-public class SimulationScene: SKScene {
+open class SimulationScene: SKScene {
     
     let gridPosition = CGPoint(x: 10.0, y: 100.0)
     let palettePosition = CGPoint(x: 10.0, y: 500.0)
@@ -25,7 +25,7 @@ public class SimulationScene: SKScene {
     var stepButton: MSButtonNode!
     var generationLabel: SKLabelNode!
     
-    var timer: NSTimer? = nil
+    var timer: Timer? = nil
     
     var liveChar: Character?
     
@@ -37,19 +37,19 @@ public class SimulationScene: SKScene {
         self.palette = palette
     }
     
-    public override func didMoveToView(view: SKView) {
-        playButton = childNodeWithName("playButton") as! MSPlayPauseToggleButtonNode
-        stepButton = childNodeWithName("stepButton") as! MSButtonNode
+    open override func didMove(to view: SKView) {
+        playButton = childNode(withName: "playButton") as! MSPlayPauseToggleButtonNode
+        stepButton = childNode(withName: "stepButton") as! MSButtonNode
         playButton.selectedHandler = playPausePressed
         stepButton.selectedHandler = stepButtonPressed
         
-        generationLabel = childNodeWithName("generationLabel") as! SKLabelNode
+        generationLabel = childNode(withName: "generationLabel") as! SKLabelNode
         
-        grid = childNodeWithName("grid") as! TouchableGrid
+        grid = childNode(withName: "grid") as! TouchableGrid
         grid.setup(sim.grid)
         grid.touchCallback = gridCellTouched
         
-        paletteGrid = childNodeWithName("palette") as! PaletteGrid
+        paletteGrid = childNode(withName: "palette") as! PaletteGrid
         paletteGrid.setup(palette)
         paletteGrid.touchCallback = paletteCellTouched
         
@@ -61,7 +61,7 @@ public class SimulationScene: SKScene {
         }
     }
     
-    func gridCellTouched(x: Int, y: Int, moved: Bool) {
+    func gridCellTouched(_ x: Int, y: Int, moved: Bool) {
         if sim.grid[x][y] != liveChar {
             sim.grid[x][y] = liveChar
         } else {
@@ -70,7 +70,7 @@ public class SimulationScene: SKScene {
         update()
     }
     
-    func paletteCellTouched(x: Int, y: Int, moved: Bool) {
+    func paletteCellTouched(_ x: Int, y: Int, moved: Bool) {
         paletteGrid.highlightCell(x)
         liveChar = palette[x]
     }
@@ -84,7 +84,7 @@ public class SimulationScene: SKScene {
     
     func playPausePressed() {
         if playButton.toggled {
-            timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(SimulationScene.timerUpdate), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(SimulationScene.timerUpdate), userInfo: nil, repeats: true)
             timer?.fire()
         } else {
             timer?.invalidate()

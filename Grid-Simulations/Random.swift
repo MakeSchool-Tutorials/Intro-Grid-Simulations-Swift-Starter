@@ -9,5 +9,5 @@
 import Foundation
 
 public func randomZeroToOne() -> Double {
-    return Double(random()) / Double(RAND_MAX)
+    return Double(arc4random_uniform(UInt32.max)) / Double(UInt32.max)
 }
