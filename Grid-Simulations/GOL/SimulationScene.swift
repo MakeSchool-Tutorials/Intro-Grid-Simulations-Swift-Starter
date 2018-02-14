@@ -75,7 +75,7 @@ open class SimulationScene: SKScene {
         liveChar = palette[x]
     }
     
-    func timerUpdate() {
+    @objc func timerUpdate() {
         generation += 1
         generationLabel.text = "Generation: \(generation)"
         sim.update()

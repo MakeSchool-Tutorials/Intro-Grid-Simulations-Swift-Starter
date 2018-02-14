@@ -36,16 +36,16 @@ open class Simulation {
             var rowLength = 0
             while let line = reader.nextLine() {
                 if grid.count == 0 {
-                    rowLength = line.characters.count
+                    rowLength = line.count
                     grid = [[Character?]].init(repeating: [], count: rowLength)
                 }
-                if line.characters.count != rowLength {
+                if line.count != rowLength {
                     // something is wrong
-                    print("expected line length of \(rowLength), got length of \(line.characters.count)")
+                    print("expected line length of \(rowLength), got length of \(line.count)")
                     return nil
                 }
                 for i in 0..<rowLength {
-                    let char = line[line.characters.index(line.startIndex, offsetBy: i)]
+                    let char = line[line.index(line.startIndex, offsetBy: i)]
                     if char == nullChar {
                         grid[i].append(nil)
                     } else {
