@@ -16,7 +16,7 @@ class GameViewController: UIViewController {
         
         
         ///////////////////////////////////////
-        // GameOfLifeSimulation setup start //
+        // GameOfLifeSimulation setup start (ゲームオブライフシミュレーションの設定はここから） //
         /////////////////////////////////////
         
         let filePath = Bundle.main.path(forResource: "map01", ofType: "txt")!
@@ -24,29 +24,29 @@ class GameViewController: UIViewController {
         let palette: [Character?] = ["👾", "😸", nil, nil, nil, nil, nil, nil]
         
         /////////////////////////////////////
-        // GameOfLifeSimulation setup end //
+        // GameOfLifeSimulation setup end　（ゲームオブライフシミュレーションの設定はここまで）//
         ///////////////////////////////////
         
         ///////////////////////////////////////
-        // ForestFireSimulation setup start //
+        // ForestFireSimulation setup start（ForestFireSimulationの設定はここから） //
         /////////////////////////////////////
         
 //        let sim = ForestFireSimulation()
 //        let palette: [Character?] = ["🔥", "🌲", nil, nil, nil, nil, nil, nil]
         
         /////////////////////////////////////
-        // ForestFireSimulation setup end //
+        // ForestFireSimulation setup end （ForestFireSimulationの設定はここまで）//
         ///////////////////////////////////
         
         ////////////////////////////////////
-        // Custom Simulation setup start //
+        // Custom Simulation setup start （カスタムシミュレーションの設定はここから）//
         //////////////////////////////////
         
 //        let sim = YourSimulationClass()
 //        let palette: [Character?] = [nil, nil, nil, nil, nil, nil, nil, nil]
         
         //////////////////////////////////
-        // Custom Simulation setup end //
+        // Custom Simulation setup end （カスタムシミュレーションの設定はここまで）//
         ////////////////////////////////
         
         let scene = SimulationScene(fileNamed: "SimulationScene")!
